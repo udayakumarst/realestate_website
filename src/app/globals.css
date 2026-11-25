@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Apex Architectural Orange & Terracotta */
+  --color-brand-400: #f07436;
+  --color-brand-500: #e25c1d;
+  --color-brand-600: #c94b12;
+  --color-brand-700: #a73c0c;
+
+  /* Industrial Dark Navy / Midnight Blueprint */
+  --color-apex-dark: #090d13;
+  --color-apex-card: #0f151f;
+  --color-apex-border: #1e2634;
+  --color-apex-border-light: #2c3749;
+
+  /* Light Architectural Paper / Travertine */
+  --color-cream: #fbf9f5;
+  --color-cream-surface: #ffffff;
+  --color-cream-border: #e6e0d5;
+
+  /* Typography */
+  --color-ink: #0d1117;
+  --color-ink-muted: #57606a;
+  --color-ink-light: #8b949e;
+
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-apex-dark);
+  color: #ffffff;
+  font-family: var(--font-sans);
+}
+
+.container-apex {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .container-apex {
+    padding-inline: 3rem;
+  }
+}
+
+/* Apex Section Labels (e.g. "01 / CAPABILITIES") */
+.section-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-500);
+}
+
+/* Apex Buttons */
+.btn-apex-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--color-brand-500);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.2rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(226, 92, 29, 0.25);
+  cursor: pointer;
+}
+.btn-apex-orange:hover {
+  background-color: var(--color-brand-400);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(226, 92, 29, 0.35);
+}
+
+.btn-apex-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: rgba(15, 21, 31, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.2rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-apex-dark:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Diagonal Corner Arrow Link */
+.corner-arrow-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: rgba(9, 13, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+.group:hover .corner-arrow-btn {
+  background: var(--color-brand-500);
+  border-color: var(--color-brand-500);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Dark Architectural Grid Background */
+.hero-blueprint-bg {
+  background-color: #070a0e;
+  background-image:
+    radial-gradient(ellipse at 70% 30%, rgba(226, 92, 29, 0.12) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 64px 64px, 64px 64px;
+}
+
+/* Category Filter Pill */
+.filter-pill {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.filter-pill.active {
+  background-color: var(--color-brand-500);
+  color: #ffffff;
+}
+.filter-pill.inactive {
+  background-color: #121822;
+  color: #8b949e;
+  border: 1px solid #1e2634;
+}
+.filter-pill.inactive:hover {
+  background-color: #18202d;
+  color: #ffffff;
+  border-color: #2c3749;
 }
