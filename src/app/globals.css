@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Apex Architectural Orange & Terracotta */
+  /* Apex & Gold Architectural Palette */
   --color-brand-400: #f07436;
   --color-brand-500: #e25c1d;
   --color-brand-600: #c94b12;
   --color-brand-700: #a73c0c;
+
+  /* Gold Luxury Accent */
+  --color-gold-300: #f3cf8c;
+  --color-gold-400: #e5a855;
+  --color-gold-500: #d89b4b;
+  --color-gold-600: #be8235;
 
   /* Industrial Dark Navy / Midnight Blueprint */
   --color-apex-dark: #090d13;
@@ -23,8 +29,8 @@
   --color-ink-muted: #57606a;
   --color-ink-light: #8b949e;
 
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 html {
@@ -49,17 +55,65 @@ body {
   }
 }
 
-/* Apex Section Labels (e.g. "01 / CAPABILITIES") */
-.section-index {
+/* Serif Typography from BookVerse (Pic 1) */
+.font-display-serif {
+  font-family: var(--font-serif);
+}
+
+/* Hero Atmospheric Background Picture (Pic 1 Style) */
+.hero-bookverse-bg {
+  background-color: #070a0e;
+  background-image:
+    linear-gradient(to bottom, rgba(7, 10, 14, 0.72) 0%, rgba(9, 13, 19, 0.88) 60%, rgba(9, 13, 19, 0.98) 100%),
+    radial-gradient(ellipse at 80% 20%, rgba(226, 92, 29, 0.15) 0%, transparent 50%),
+    url('/hero-architecture.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Buttons matching BookVerse (Pic 1) */
+.btn-bookverse-gold {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.8rem;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: #e5a855;
+  color: #090d13;
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-brand-500);
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(229, 168, 85, 0.25);
+  cursor: pointer;
+}
+.btn-bookverse-gold:hover {
+  background-color: #d89b4b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(229, 168, 85, 0.35);
+}
+
+.btn-bookverse-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.375rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-bookverse-outline:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
 }
 
 /* Apex Buttons */
@@ -129,16 +183,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Dark Architectural Grid Background */
-.hero-blueprint-bg {
-  background-color: #070a0e;
-  background-image:
-    radial-gradient(ellipse at 70% 30%, rgba(226, 92, 29, 0.12) 0%, transparent 60%),
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 64px 64px, 64px 64px;
-}
-
 /* Category Filter Pill */
 .filter-pill {
   padding: 0.5rem 1.25rem;
@@ -163,4 +207,17 @@ body {
   background-color: #18202d;
   color: #ffffff;
   border-color: #2c3749;
+}
+
+/* Section Index Label */
+.section-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-500);
 }

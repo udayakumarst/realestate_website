@@ -14,25 +14,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#1c2432] bg-[#090d13]/95 backdrop-blur-md">
       <div className="container-apex flex h-20 items-center justify-between">
-        {/* Brand Logo without orange border, blending seamlessly with website background */}
-        <Link href="/" className="flex items-center gap-3.5 group" onClick={() => setOpen(false)}>
-          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xs bg-[#090d13] transition-transform group-hover:scale-105">
+        {/* Clean Official Logo from Pic 3 */}
+        <Link href="/" className="flex items-center group" onClick={() => setOpen(false)}>
+          <div className="relative h-14 w-48 sm:w-56 md:w-64">
             <Image
-              src="/shubham-logo.jpg"
+              src="/shubham-logo.webp"
               alt={site.name}
               fill
-              className="object-cover object-top"
-              sizes="48px"
+              className="object-contain object-left transition-transform group-hover:scale-102"
               priority
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-sans text-xl font-black tracking-wider text-white uppercase group-hover:text-[#e25c1d] transition-colors leading-tight">
-              {site.shortName}
-            </span>
-            <span className="font-mono text-[8.5px] font-bold tracking-[0.14em] text-[#8b949e] uppercase">
-              CONSTRUCTION · LAYOUT DEVELOPMENT · REAL ESTATE · INTERIORS
-            </span>
           </div>
         </Link>
 
@@ -43,20 +34,20 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`font-mono text-xs font-bold tracking-widest uppercase transition-colors ${
-                isActive(item.href) ? "text-[#e25c1d]" : "text-[#c9d1d9] hover:text-white"
+                isActive(item.href) ? "text-[#e5a855]" : "text-[#c9d1d9] hover:text-white"
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-apex-orange py-2.5 px-4.5 text-xs">
-            Start Brief ↗
+          <Link href="/contact" className="btn-bookverse-gold py-2.5 px-5 text-xs font-bold uppercase tracking-wider">
+            Start Brief →
           </Link>
         </nav>
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className="p-2.5 text-white hover:text-[#e25c1d] transition-colors md:hidden"
+          className="p-2.5 text-white hover:text-[#e5a855] transition-colors md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle navigation menu"
           aria-expanded={open}
@@ -81,7 +72,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`font-mono text-sm font-bold tracking-widest uppercase py-2 ${
-                  isActive(item.href) ? "text-[#e25c1d]" : "text-white"
+                  isActive(item.href) ? "text-[#e5a855]" : "text-white"
                 }`}
               >
                 {item.label}
@@ -90,9 +81,9 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="btn-apex-orange text-center mt-2 py-3"
+              className="btn-bookverse-gold text-center mt-2 py-3"
             >
-              Start Project Brief ↗
+              Start Project Brief →
             </Link>
           </div>
         </div>
