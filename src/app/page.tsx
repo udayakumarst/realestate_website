@@ -3,38 +3,84 @@ import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { ContactForm } from "@/components/ContactForm";
+import { HeroSlider } from "@/components/HeroSlider";
 import { commitments, process, services, site, stats, testimonials } from "@/data/site";
 
 export default function Home() {
   return (
     <>
-      {/* 01. HERO SECTION (BookVerse Style from Pic 1: Atmospheric twilight architecture background & luxury serif typography) */}
-      <section className="hero-bookverse-bg relative min-h-[88vh] flex items-center border-b border-[#1e2634] py-24 md:py-36 overflow-hidden">
-        <div className="container-apex relative z-10">
-          <div className="max-w-4xl">
-            {/* Golden Eyebrow matching Pic 1 */}
-            <div className="flex items-center gap-2 font-mono text-xs md:text-sm font-bold tracking-[0.24em] text-[#e5a855] uppercase mb-6">
-              <span>WELCOME TO SHUBHAM</span>
+      {/* 01. HERO SECTION WITH BACKGROUND IMAGE SLIDER (Shifting text up, increasing welcome font, right-side work card) */}
+      <section className="relative min-h-[82vh] md:min-h-[86vh] flex items-center border-b border-[#1e2634] pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 md:pb-28 overflow-hidden">
+        {/* Background Slideshow cycling background1, background2, background3, background4 */}
+        <HeroSlider />
+
+        <div className="container-apex relative z-10 w-full">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Heading, Subtitle & CTAs (Shifted Up) */}
+            <div className="lg:col-span-8 max-w-3xl">
+              {/* Golden Eyebrow with INCREASED font size as requested */}
+              <div className="flex items-center gap-3 font-mono text-sm sm:text-base md:text-lg font-black tracking-[0.28em] text-[#e5a855] uppercase mb-4 sm:mb-5">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#e5a855] animate-pulse" />
+                <span>WELCOME TO SHUBHAM</span>
+              </div>
+
+              {/* Massive Luxury Serif Display Headline */}
+              <h1 className="font-display-serif text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-normal text-white tracking-tight leading-[1.06]">
+                Groundwork For What Comes Next.
+              </h1>
+
+              {/* Subtitle */}
+              <p className="mt-5 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl font-normal leading-relaxed text-[#c9d1d9]">
+                {site.description}
+              </p>
+
+              {/* CTAs */}
+              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+                <Link href="#work" className="btn-bookverse-gold text-xs sm:text-sm py-3 px-6 sm:py-3.5 sm:px-8 font-bold">
+                  Explore Projects →
+                </Link>
+                <Link href="/contact" className="btn-bookverse-outline text-xs sm:text-sm py-3 px-6 sm:py-3.5 sm:px-8 font-bold">
+                  Request Feasibility Assessment
+                </Link>
+              </div>
             </div>
 
-            {/* Massive Luxury Serif Display Headline matching Pic 1 */}
-            <h1 className="font-display-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.08]">
-              Groundwork For What Comes Next.
-            </h1>
+            {/* Right Side Card (Requirement 3: Our work in the open space on right side) */}
+            <div className="lg:col-span-4 hidden lg:block">
+              <div className="p-6 bg-[#090d13]/85 backdrop-blur-md border border-[#e5a855]/40 rounded-xs shadow-2xl space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-[#1e2634]">
+                  <span className="font-mono text-[11px] font-black tracking-[0.2em] text-[#e5a855] uppercase">
+                    OUR CORE WORK
+                  </span>
+                  <span className="font-mono text-[10px] text-[#8b949e]">BENGALURU</span>
+                </div>
 
-            {/* Subtitle with high-conviction engineering copy */}
-            <p className="mt-8 max-w-2xl text-lg md:text-xl font-normal leading-relaxed text-[#c9d1d9]">
-              {site.description}
-            </p>
+                <div className="space-y-3 font-mono text-xs">
+                  <div className="flex items-center gap-3 p-2.5 rounded-xs bg-[#161f2e]/60 border border-[#2c3749]">
+                    <span className="w-2 h-2 rounded-full bg-[#e5a855]" />
+                    <span className="font-bold text-white tracking-wider">CONSTRUCTION</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-2.5 rounded-xs bg-[#161f2e]/60 border border-[#2c3749]">
+                    <span className="w-2 h-2 rounded-full bg-[#e5a855]" />
+                    <span className="font-bold text-white tracking-wider">LAYOUT DEVELOPMENT</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-2.5 rounded-xs bg-[#161f2e]/60 border border-[#2c3749]">
+                    <span className="w-2 h-2 rounded-full bg-[#e5a855]" />
+                    <span className="font-bold text-white tracking-wider">REAL ESTATE</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-2.5 rounded-xs bg-[#161f2e]/60 border border-[#2c3749]">
+                    <span className="w-2 h-2 rounded-full bg-[#e5a855]" />
+                    <span className="font-bold text-white tracking-wider">INTERIORS</span>
+                  </div>
+                </div>
 
-            {/* CTAs matching BookVerse Pic 1 */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link href="#work" className="btn-bookverse-gold">
-                Explore Projects →
-              </Link>
-              <Link href="/contact" className="btn-bookverse-outline">
-                Request Feasibility Assessment
-              </Link>
+                <div className="pt-2 border-t border-[#1e2634] flex items-center justify-between text-[11px] font-mono text-[#8b949e]">
+                  <span>Direct Call:</span>
+                  <a href="tel:+919008213348" className="text-[#e5a855] font-bold hover:underline">
+                    +91 90082 13348
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -158,54 +204,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04. CAPABILITIES / SERVICES SECTION */}
-      <section id="capabilities" className="bg-[#fbf9f5] text-[#0d1117] py-24 md:py-32 border-b border-[#e6e0d5]">
+      {/* 04. CAPABILITIES / SERVICES SECTION (Dark Architectural Theme) */}
+      <section id="capabilities" className="bg-[#0c121b] text-white py-24 md:py-32 border-b border-[#1e2634]">
         <div className="container-apex">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-14 border-b border-[#e6e0d5]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-14 border-b border-[#1e2634]">
             <div className="max-w-2xl">
-              <span className="section-index">01 / CAPABILITIES</span>
-              <h2 className="mt-4 font-display-serif text-4xl sm:text-5xl font-normal tracking-tight text-[#0d1117]">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#e5a855] uppercase">
+                01 / CAPABILITIES
+              </span>
+              <h2 className="mt-4 font-display-serif text-4xl sm:text-5xl font-normal tracking-tight text-white">
                 The Full Picture, Not Just One Trade.
               </h2>
-              <p className="mt-4 text-base md:text-lg text-[#57606a] leading-relaxed">
+              <p className="mt-4 text-base md:text-lg text-[#8b949e] leading-relaxed">
                 Complex projects need one accountable team across the ground, the structure and every decision in between.
               </p>
             </div>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#e25c1d] hover:text-[#c94b12] transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#e5a855] hover:text-[#f3cf8c] transition-colors"
             >
               Talk through your site <span>→</span>
             </Link>
           </div>
 
           {/* Capabilities Grid */}
-          <div className="mt-12 grid gap-px bg-[#e6e0d5] sm:grid-cols-2 lg:grid-cols-3 border border-[#e6e0d5]">
+          <div className="mt-12 grid gap-px bg-[#1e2634] sm:grid-cols-2 lg:grid-cols-3 border border-[#1e2634]">
             {services.map((s, idx) => (
               <div
                 key={s.slug}
-                className="bg-white p-8 md:p-10 flex flex-col justify-between transition-colors hover:bg-[#f6f2ea]"
+                className="bg-[#090d13] p-8 md:p-10 flex flex-col justify-between transition-colors hover:bg-[#131a26]"
               >
                 <div>
-                  <div className="flex items-center justify-between pb-6 border-b border-[#f0ede6]">
-                    <span className="font-mono text-sm font-black text-[#57606a]">
+                  <div className="flex items-center justify-between pb-6 border-b border-[#1e2634]">
+                    <span className="font-mono text-sm font-black text-[#e5a855]">
                       0{idx + 1}
                     </span>
-                    <span className="text-[#e25c1d]">
+                    <span className="text-[#e5a855]">
                       <Icon name={s.icon} className="h-6 w-6" />
                     </span>
                   </div>
 
-                  <h3 className="mt-6 font-display-serif text-2xl font-normal text-[#0d1117]">
+                  <h3 className="mt-6 font-display-serif text-2xl font-normal text-white">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#57606a]">
+                  <p className="mt-3 text-sm leading-relaxed text-[#c9d1d9]">
                     {s.summary}
                   </p>
                 </div>
 
-                <div className="mt-10 pt-6 border-t border-[#f0ede6]">
-                  <div className="flex flex-wrap gap-2 text-[10px] font-mono font-bold tracking-wider uppercase text-[#8c959f]">
+                <div className="mt-10 pt-6 border-t border-[#1e2634]">
+                  <div className="flex flex-wrap gap-2 text-[10px] font-mono font-bold tracking-wider uppercase text-[#8b949e]">
                     {s.tags.map((t, i) => (
                       <span key={t}>
                         {t}{i < s.tags.length - 1 ? " / " : ""}

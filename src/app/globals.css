@@ -66,7 +66,7 @@ body {
   background-image:
     linear-gradient(to bottom, rgba(7, 10, 14, 0.72) 0%, rgba(9, 13, 19, 0.88) 60%, rgba(9, 13, 19, 0.98) 100%),
     radial-gradient(ellipse at 80% 20%, rgba(226, 92, 29, 0.15) 0%, transparent 50%),
-    url('/hero-architecture.jpg');
+    url('/background1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

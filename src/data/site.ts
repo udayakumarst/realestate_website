@@ -5,14 +5,14 @@ export const site = {
   tagline: "Building Trust. Creating Legacies.",
   description:
     "Residential & commercial construction, turnkey villas, layout development, interior design, renovations and real estate consultancy — delivering quality, transparency and trust in every project.",
-  phone: "+91 9008213348",
+  phone: "+91 90082 13348",
   email: "shubham@gmail.com",
   whatsapp: "919008213348",
   address: "Whitefield, Bengaluru 560001",
   mapsUrl: "https://maps.app.goo.gl/8iwThAw25cqDkwaN9",
   hours: "Open 24/7 | 365 Days a Year",
   established: 2020,
-  logo: "/shubham-logo.jpg",
+  logo: "/shubham-logo.webp",
 };
 
 export const nav = [

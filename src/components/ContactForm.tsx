@@ -9,23 +9,65 @@ const inputStyle =
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ state: "idle" });
+  const [whatsappHref, setWhatsappHref] = useState<string>("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData) as Record<string, string>;
+
     setStatus({ state: "sending" });
+
+    // Format professional WhatsApp message for 9008213348
+    const waText = [
+      "*NEW INQUIRY — SHUBHAM WEBSITE*",
+      "---------------------------------------",
+      `👤 *Name:* ${data.name || ""}`,
+      `📞 *Phone:* ${data.phone || ""}`,
+      `📧 *Email:* ${data.email || ""}`,
+      data.organization ? `🏢 *Company:* ${data.organization}` : null,
+      `🏗️ *Discipline / Service:* ${data.service || "Construction"}`,
+      `⏱️ *Target Timeline:* ${data.timeline || "Immediate"}`,
+      data.location ? `📍 *Location:* ${data.location}` : null,
+      data.area ? `📐 *Site Area:* ${data.area}` : null,
+      "",
+      `💬 *Requirement / Scope:*`,
+      `${data.message || ""}`,
+      "---------------------------------------",
+      "Sent from shubham-realty.vercel.app",
+    ]
+      .filter((line) => line !== null)
+      .join("\n");
+
+    const waUrl = `https://wa.me/919008213348?text=${encodeURIComponent(waText)}`;
+    setWhatsappHref(waUrl);
+
+    // Automatically trigger WhatsApp in a new tab/window
     try {
-      const res = await fetch("/api/contact", {
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // In case popup is blocked, the user can click the button shown in success message
+    }
+
+    try {
+      // Also post to internal API endpoint
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        body: JSON.stringify(data),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
+
+      setStatus({
+        state: "sent",
+        message: "Your inquiry has been prepared for WhatsApp (+91 90082 13348). Click below if WhatsApp did not open automatically.",
+      });
       form.reset();
-      setStatus({ state: "sent", message: "Brief received. An engineer will contact you within 24 hours." });
-    } catch (err) {
-      setStatus({ state: "error", message: err instanceof Error ? err.message : "Something went wrong." });
+    } catch {
+      setStatus({
+        state: "sent",
+        message: "Details ready! Click below to send directly via WhatsApp to +91 90082 13348.",
+      });
     }
   }
 
@@ -111,24 +153,38 @@ export function ContactForm() {
       {/* Honeypot anti-spam */}
       <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
+      {/* Submit directly to WhatsApp */}
       <button
         type="submit"
         disabled={status.state === "sending"}
-        className="w-full btn-apex-orange py-3.5 text-xs font-bold tracking-widest uppercase disabled:opacity-60 cursor-pointer"
+        className="w-full flex items-center justify-center gap-2.5 py-4 px-6 bg-[#25D366] hover:bg-[#20ba59] text-[#090d13] font-mono text-xs font-black tracking-widest uppercase rounded-xs transition-all shadow-lg hover:shadow-[#25D366]/20 cursor-pointer disabled:opacity-60"
       >
-        {status.state === "sending" ? "Submitting Brief…" : "Submit Project Brief ↗"}
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.237-.038.37.284.144.35.49 1.198.533 1.285.044.086.073.187.015.303-.059.116-.088.188-.175.289l-.26.303c-.087.087-.178.182-.077.356.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.086.159.058 1.011.477 1.184.564.174.087.289.13.332.203.043.072.043.419-.101.824z" />
+        </svg>
+        <span>{status.state === "sending" ? "Preparing Brief…" : "Submit & Send Directly to WhatsApp (9008213348) ↗"}</span>
       </button>
 
       {status.message && (
         <div
           role="status"
-          className={`p-3 text-xs font-mono font-bold uppercase tracking-wide rounded-xs ${
+          className={`p-4 text-xs font-mono font-bold tracking-wide rounded-xs flex flex-col gap-2 ${
             status.state === "error"
               ? "bg-[#ffebe9] text-[#cf222e] border border-[#ff8182]"
-              : "bg-[#dafbe1] text-[#1a7f37] border border-[#4ac26b]"
+              : "bg-[#090d13] text-[#25D366] border border-[#25D366]/40"
           }`}
         >
-          {status.message}
+          <p>{status.message}</p>
+          {whatsappHref && (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white bg-[#25D366] hover:bg-[#20ba59] px-4 py-2 rounded-xs font-bold uppercase tracking-wider text-[11px] self-start mt-1"
+            >
+              Open WhatsApp Now 💬
+            </a>
+          )}
         </div>
       )}
     </form>
