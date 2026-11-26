@@ -40,9 +40,9 @@ export function HeroSlider() {
         </div>
       ))}
 
-      {/* Atmospheric dark gradient overlays to guarantee pristine contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#090d13]/85 via-[#090d13]/70 to-[#090d13]/98" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_35%,rgba(9,13,19,0.4),rgba(9,13,19,0.92))]" />
+      {/* Atmospheric dark gradient overlays calibrated for enhanced image prominence & crisp contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#090d13]/68 via-[#090d13]/45 to-[#090d13]/88" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(9,13,19,0.18),rgba(9,13,19,0.82))]" />
 
       {/* Slide Indicator Dots (clickable via pointer-events-auto) */}
       <div className="absolute bottom-6 right-6 md:bottom-10 md:right-12 z-20 flex items-center gap-2 pointer-events-auto">

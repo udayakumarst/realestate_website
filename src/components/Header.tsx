@@ -13,24 +13,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#1c2432] bg-[#090d13]/95 backdrop-blur-md">
-      <div className="container-apex flex h-20 items-center justify-between">
-        {/* Clean Transparent Logo & Micro-Tagline */}
-        <div className="flex flex-col justify-center">
-          <Link href="/" className="flex items-center group" onClick={() => setOpen(false)}>
-            <div className="relative h-13 w-44 sm:w-56 md:w-64">
-              <Image
-                src="/shubham-logo.webp"
-                alt={site.name}
-                fill
-                className="object-contain object-left transition-transform group-hover:scale-102"
-                priority
-              />
-            </div>
-          </Link>
-          <div className="hidden sm:block font-mono text-[8.5px] md:text-[9.5px] tracking-[0.16em] text-[#e5a855] uppercase font-semibold mt-0.5">
-            CONSTRUCTION · LAYOUT DEVELOPMENT · REAL ESTATE · INTERIORS
+      <div className="container-apex flex h-22 sm:h-24 items-center justify-between">
+        {/* Enlarged Clean Transparent Logo (Micro-tagline removed as requested) */}
+        <Link href="/" className="flex items-center group py-2" onClick={() => setOpen(false)}>
+          <div className="relative h-16 sm:h-20 w-52 sm:w-68 md:w-80">
+            <Image
+              src="/shubham-logo.webp"
+              alt={site.name}
+              fill
+              className="object-contain object-left transition-transform group-hover:scale-102"
+              priority
+            />
           </div>
-        </div>
+        </Link>
 
         {/* Right Header: Phone Contact & Navigation */}
         <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
@@ -87,9 +82,6 @@ export function Header() {
       {open && (
         <div className="border-t border-[#1c2432] bg-[#090d13] px-6 py-6 md:hidden">
           <div className="flex flex-col gap-4">
-            <div className="font-mono text-[9px] tracking-widest text-[#e5a855] uppercase font-bold pb-2 border-b border-[#1c2432]">
-              CONSTRUCTION · LAYOUT DEVELOPMENT · REAL ESTATE · INTERIORS
-            </div>
             {nav.map((item) => (
               <Link
                 key={item.href}

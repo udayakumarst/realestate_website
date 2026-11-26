@@ -9,18 +9,18 @@ import { commitments, process, services, site, stats, testimonials } from "@/dat
 export default function Home() {
   return (
     <>
-      {/* 01. HERO SECTION WITH BACKGROUND IMAGE SLIDER (Shifting text up, increasing welcome font, right-side work card) */}
-      <section className="relative min-h-[82vh] md:min-h-[86vh] flex items-center border-b border-[#1e2634] pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 md:pb-28 overflow-hidden">
+      {/* 01. HERO SECTION WITH BACKGROUND IMAGE SLIDER */}
+      <section className="relative min-h-[86vh] md:min-h-[90vh] flex items-center border-b border-[#1e2634] pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 md:pb-28 overflow-hidden">
         {/* Background Slideshow cycling background1, background2, background3, background4 */}
         <HeroSlider />
 
         <div className="container-apex relative z-10 w-full">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: Heading, Subtitle & CTAs (Shifted Up) */}
+            {/* Left Column: Heading, Subtitle & CTAs */}
             <div className="lg:col-span-8 max-w-3xl">
-              {/* Golden Eyebrow with INCREASED font size as requested */}
-              <div className="flex items-center gap-3 font-mono text-sm sm:text-base md:text-lg font-black tracking-[0.28em] text-[#e5a855] uppercase mb-4 sm:mb-5">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#e5a855] animate-pulse" />
+              {/* Bold & Enlarged WELCOME TO SHUBHAM Eyebrow */}
+              <div className="flex items-center gap-3 font-mono text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-[0.22em] text-[#e5a855] uppercase mb-4 sm:mb-6 drop-shadow-md">
+                <span className="inline-block w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-[#e5a855] animate-pulse shadow-md shadow-[#e5a855]/60" />
                 <span>WELCOME TO SHUBHAM</span>
               </div>
 
@@ -45,7 +45,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Side Card (Requirement 3: Our work in the open space on right side) */}
+            {/* Right Side Card: Our Core Work (Bottom phone row removed as requested) */}
             <div className="lg:col-span-4 hidden lg:block">
               <div className="p-6 bg-[#090d13]/85 backdrop-blur-md border border-[#e5a855]/40 rounded-xs shadow-2xl space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#1e2634]">
@@ -72,13 +72,6 @@ export default function Home() {
                     <span className="w-2 h-2 rounded-full bg-[#e5a855]" />
                     <span className="font-bold text-white tracking-wider">INTERIORS</span>
                   </div>
-                </div>
-
-                <div className="pt-2 border-t border-[#1e2634] flex items-center justify-between text-[11px] font-mono text-[#8b949e]">
-                  <span>Direct Call:</span>
-                  <a href="tel:+919008213348" className="text-[#e5a855] font-bold hover:underline">
-                    +91 90082 13348
-                  </a>
                 </div>
               </div>
             </div>
@@ -427,54 +420,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09. CONTACT / START CONVERSATION */}
-      <section id="contact" className="bg-[#e25c1d] text-white py-20 md:py-28">
+      {/* 09. CONTACT / START CONVERSATION (Light Goldish Background Theme) */}
+      <section id="contact" className="bg-[#f7ebd8] text-[#1a140e] py-20 md:py-28 border-t border-[#e5d2b8]">
         <div className="container-apex">
           <div className="grid lg:grid-cols-[1.1fr_1.4fr] gap-12 lg:gap-16 items-start">
             {/* Left Header */}
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#ffddc9] bg-black/20 px-3 py-1 rounded-xs">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#8a5716] bg-[#e5a855]/25 border border-[#e5a855]/40 px-3.5 py-1.5 rounded-xs">
                 05 / START THE CONVERSATION
               </span>
-              <h2 className="mt-6 font-display-serif text-5xl sm:text-6xl font-normal tracking-tight text-white leading-none">
+              <h2 className="mt-6 font-display-serif text-5xl sm:text-6xl font-normal tracking-tight text-[#1a140e] leading-none">
                 Bring Us The Hard Brief.
               </h2>
-              <p className="mt-6 text-lg text-[#ffede3] max-w-lg leading-relaxed">
+              <p className="mt-6 text-lg text-[#5a4a37] max-w-lg leading-relaxed">
                 Tell us what you know, what you are solving for and where the site is. We will help shape the next useful step.
               </p>
 
-              <div className="mt-10 pt-8 border-t border-white/20 space-y-4 font-mono text-sm">
+              <div className="mt-10 pt-8 border-t border-[#e2cfb4] space-y-4 font-mono text-sm">
                 <p className="flex items-center gap-3">
-                  <span className="text-white/70">DIRECT LINE:</span>
-                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="font-bold text-white hover:underline">
+                  <span className="text-[#7d6b56]">DIRECT LINE:</span>
+                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="font-bold text-[#1a140e] hover:text-[#8a5716] transition-colors">
                     {site.phone}
                   </a>
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-white/70">EMAIL:</span>
-                  <a href={`mailto:${site.email}`} className="font-bold text-white hover:underline">
+                  <span className="text-[#7d6b56]">EMAIL:</span>
+                  <a href={`mailto:${site.email}`} className="font-bold text-[#1a140e] hover:text-[#8a5716] transition-colors">
                     {site.email}
                   </a>
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-white/70">LOCATION:</span>
-                  <span className="font-bold text-white">{site.address}</span>
+                  <span className="text-[#7d6b56]">LOCATION:</span>
+                  <span className="font-bold text-[#1a140e]">{site.address}</span>
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-white/70">AVAILABILITY:</span>
-                  <span className="font-bold text-white">{site.hours}</span>
+                  <span className="text-[#7d6b56]">AVAILABILITY:</span>
+                  <span className="font-bold text-[#1a140e]">{site.hours}</span>
                 </p>
               </div>
             </div>
 
             {/* Industrial Project Brief Form */}
-            <div className="bg-white text-[#0d1117] p-8 md:p-10 shadow-2xl rounded-xs">
+            <div className="bg-white text-[#0d1117] p-8 md:p-10 shadow-2xl rounded-xs border border-[#e5d2b8]">
               <div className="flex items-center justify-between pb-4 border-b border-[#e6e0d5] mb-6">
                 <div>
                   <h3 className="font-display-serif text-2xl font-normal text-[#0d1117]">Project Brief</h3>
                   <p className="text-xs text-[#57606a] mt-0.5">A few details is enough to get started.</p>
                 </div>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#e25c1d] bg-[#faeae2] px-2.5 py-1 rounded-xs border border-[#f5d4c3]">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#8a5716] bg-[#fbf4ea] px-2.5 py-1 rounded-xs border border-[#e5d2b8]">
                   NO OBLIGATION
                 </span>
               </div>
